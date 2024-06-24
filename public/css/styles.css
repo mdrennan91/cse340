@@ -364,6 +364,7 @@ footer p {
   }
 
   #wrapper {
+    min-height: 100vh;
     grid-column: 2;
     background-color: #fff;
     border: 5px solid #004888;
@@ -470,6 +471,6 @@ footer p {
 
   .classification-title {
     text-align: left; 
-    margin-left: 1rem; 
+    margin: 1rem; 
   }
 }
