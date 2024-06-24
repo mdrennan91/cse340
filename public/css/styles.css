@@ -70,20 +70,26 @@ body, p, ul, li {
   margin: 0 15px;
 }
 
-.navbar .navbar-links {
+.navbar ul {
   display: flex;
   justify-content: space-around;
   list-style: none;
+  padding: 0; 
+  margin: 0; 
 }
 
-.navbar .navbar-links li a {
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   font-family: 'noto sans display', 'sans-serif';
 }
 
-.navbar .navbar-links li a:hover {
+.navbar ul li a:hover {
   text-decoration: underline;
   text-decoration-color: #ffffff;
   transition: all 0.4s ease 0s;
@@ -280,6 +286,71 @@ footer p {
 }
 
 
+/******* Vehicle Classification Grid ***************/
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+  justify-items: center; 
+}
+
+#inv-display li {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 90%;
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+#inv-display li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+#inv-display li img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#inv-display .namePrice {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+#inv-display .namePrice h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  font-family: 'Roboto', 'Noto Sans Display', sans-serif;
+}
+
+#inv-display .namePrice span {
+  display: block;
+  font-size: 1.2rem;
+  color: #004888;
+  font-weight: bold;
+}
+
+/******* Notice Message ***************/
+.notice {
+  text-align: center;
+  font-size: 1.2rem;
+  color: red;
+  font-family: 'Roboto', 'Noto Sans Display', sans-serif;
+}
+
+.classification-title {
+  text-align: center; 
+  margin: 1rem 0; 
+  font-size: 1.8rem;
+  font-family: 'roboto', 'noto sans display';
+}
 
 
 
@@ -381,5 +452,24 @@ footer p {
 
   h2 {
     font-size: 2rem;
+  }
+
+  #inv-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start; 
+    margin-left: 20px;
+  }
+
+  #inv-display li {
+    width: calc(33.333% - 1rem);
+    max-width: none; 
+    margin: 0; 
+  }
+
+  .classification-title {
+    text-align: left; 
+    margin-left: 1rem; 
   }
 }
