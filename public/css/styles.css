@@ -279,7 +279,7 @@ body, p, ul, li {
 /******* Footer ***************/
 footer {
   padding: 15px;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   background-color: #004888;
 }
 
@@ -454,7 +454,9 @@ footer a {
   }
 
   #wrapper {
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
     grid-column: 2;
     background-color: #fff;
     border: 5px solid #004888;
@@ -482,9 +484,14 @@ footer a {
   }
 
   .main-content {
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+  }
+
+  footer {
+    margin-top: auto;
   }
 
   .welcome-image {
