@@ -28,6 +28,7 @@ body, p, ul, li {
   text-decoration: none;
   font-size: 2rem; 
   font-family: 'roboto', 'noto sans display';
+  font-weight: bold;
 }
 
 #top-header #tools a {
@@ -91,8 +92,11 @@ body, p, ul, li {
 
 .navbar ul li a:hover {
   text-decoration: underline;
+  
   text-decoration-color: #ffffff;
+ 
   transition: all 0.4s ease 0s;
+  
 }
 
 
@@ -285,6 +289,12 @@ footer p {
   color: #ffffff;
 }
 
+footer a {
+  color: #ffffff;
+  text-align: center;
+  
+}
+
 
 /******* Vehicle Classification Grid ***************/
 #inv-display {
@@ -297,11 +307,14 @@ footer p {
 }
 
 #inv-display li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: transform 0.2s, box-shadow 0.2s;
   width: 90%;
   max-width: 400px; 
@@ -320,6 +333,7 @@ footer p {
 }
 
 #inv-display .namePrice {
+  margin-top: auto;
   padding: 0.5rem 1rem;
   text-align: center;
 }
@@ -333,8 +347,13 @@ footer p {
 #inv-display .namePrice span {
   display: block;
   font-size: 1.2rem;
-  color: #004888;
+  color: black;
   font-weight: bold;
+}
+
+#inv-display .namePrice a {
+  text-decoration: none;
+  color:#004888
 }
 
 /******* Notice Message ***************/
@@ -362,11 +381,13 @@ footer p {
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-.vehicle-title h1 {
+.vehicle-title {
   margin-left: 20px;
+  text-align: center;
+  font-family: 'Roboto', 'Noto Sans Display', sans-serif;
 }
 
 .vehicle-detail img {
@@ -374,7 +395,7 @@ footer p {
   height: auto;
   max-width: 600px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   margin: 0 auto;
 }
 
@@ -538,6 +559,12 @@ footer p {
     margin: 0; 
   }
 
+  #inv-display .namePrice a {
+    text-decoration: none;
+    color:#004888;
+    font-size: 1.5rem;
+  }
+
   .classification-title {
     text-align: left; 
     margin: 1rem; 
@@ -564,4 +591,9 @@ footer p {
   .vehicle-info p {
     font-size: 1.5rem;
   }
+
+  .vehicle-title {
+    text-align: left;
+  }
+
 }
