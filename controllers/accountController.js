@@ -11,7 +11,8 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
       title: "Login",
       nav,
-      messages
+      messages,
+      errors: null
     });
   } catch (err) {
     next(err);
@@ -28,7 +29,8 @@ async function buildRegister(req, res, next) {
     res.render("account/register", {
       title: "Register",
       nav,
-      messages
+      messages,
+      errors: null,
     });
   } catch (err) {
     next(err);
@@ -38,45 +40,36 @@ async function buildRegister(req, res, next) {
 /* ****************************************
 *  Process Registration
 * *************************************** */
-async function registerAccount(req, res, next) {
-  try {
-    let nav = await utilities.getNav();
-    const { account_firstname, account_lastname, account_email, account_password } = req.body;
+async function registerAccount(req, res) {
+  let nav = await utilities.getNav();
+  const { account_firstname, account_lastname, account_email, account_password } = req.body;
 
-    console.log("Received data:", req.body);
+  const regResult = await accountModel.registerAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_password
+  );
 
-    const regResult = await accountModel.registerAccount(
-      account_firstname,
-      account_lastname,
-      account_email,
-      account_password
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you're registered ${account_firstname}. Please log in.`
     );
-
-    console.log("Registration result:", regResult);
-
-    if (regResult.rowCount) {
-      req.flash(
-        "notice",
-        `Congratulations, you're registered ${account_firstname}. Please log in.`
-      );
-      const messages = req.flash("notice") || [];
-      res.status(201).render("account/login", {
-        title: "Login",
-        nav,
-        messages
-      });
-    } else {
-      req.flash("notice", "Sorry, the registration failed.");
-      const messages = req.flash("notice") || [];
-      res.status(501).render("account/register", {
-        title: "Register",
-        nav,
-        messages
-      });
-    }
-  } catch (err) {
-    console.error("Error during registration:", err);
-    next(err);
+    res.status(201).render("account/login", {
+      title: "Login",
+      nav,
+      messages: req.flash("notice"),
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Sorry, the registration failed.");
+    res.status(501).render("account/register", {
+      title: "Registration",
+      nav,
+      messages: req.flash("notice"),
+      errors: null,
+    });
   }
 }
 

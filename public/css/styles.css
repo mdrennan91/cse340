@@ -14,6 +14,13 @@ body, p, ul, li {
 }
 
 
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
 /******* Header ***************/
 #top-header {
   display: flex;
@@ -68,7 +75,7 @@ body, p, ul, li {
 .navbar {
   background-color: #004888;
   padding: 1rem;
-  margin: 0 15px;
+  margin: 0;
 }
 
 .navbar ul {
@@ -227,6 +234,7 @@ body, p, ul, li {
   gap: 1.5rem;
   text-align: left;
   padding: 1rem .5rem;
+  margin-bottom: 3rem;
 }
 
 .delorean-upgrades .card {
@@ -279,8 +287,10 @@ body, p, ul, li {
 /******* Footer ***************/
 footer {
   padding: 15px;
-  margin-top: 2.5rem;
+  margin-top: auto;
   background-color: #004888;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 footer p {
@@ -422,9 +432,9 @@ footer a {
 }
 
 .notice {
-  text-align: center;
+  text-align: left;
   font-size: 1.2rem;
-  color: green;
+  color: red;
   font-family: 'Roboto', 'Noto Sans Display', sans-serif;
 }
 
@@ -505,12 +515,12 @@ footer a {
 
 .login-container input:required:invalid {
   border-left-color: red;
-  border-left-width: 8px;
+  border-left-width: 6px;
 }
 
 .login-container input:required:valid {
   border-left-color: green;
-  border-left-width: 8px;
+  border-left-width: 6px;
 }
 
 .login-container input:required:invalid + .input-indicator {
@@ -628,12 +638,12 @@ footer a {
 
 .register-container input:required:invalid {
   border-left-color: red;
-  border-left-width: 10px; 
+  border-left-width: 6px; 
 }
 
 .register-container input:required:valid {
   border-left-color: green;
-  border-left-width: 10px; 
+  border-left-width: 6px; 
 }
 
 .register-container .input-indicator {
@@ -716,6 +726,11 @@ footer a {
     font-size: 1.3rem;
   }
 
+  .navbar {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .main-content {
     
     display: grid;
@@ -725,6 +740,8 @@ footer a {
 
   footer {
     margin-top: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .welcome-image {
