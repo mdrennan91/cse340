@@ -11,39 +11,39 @@ validate.registrationRules = () => {
     body("account_firstname")
       .trim()
       .escape()
-      .notEmpty()
-      .isLength({ min: 1 })
-      .withMessage("Please provide a first name."),
+      .notEmpty().withMessage("First name is required.")
+      .isLength({ min: 1 }).withMessage("First name must be at least 1 character long.")
+      .bail(), 
 
     // lastname is required and must be string
     body("account_lastname")
       .trim()
       .escape()
-      .notEmpty()
-      .isLength({ min: 2 })
-      .withMessage("Please provide a last name."),
+      .notEmpty().withMessage("Last name is required.")
+      .isLength({ min: 2 }).withMessage("Last name must be at least 2 characters long.")
+      .bail(), 
 
     // valid email is required and cannot already exist in the DB
     body("account_email")
       .trim()
       .escape()
-      .notEmpty()
-      .isEmail()
-      .normalizeEmail()
-      .withMessage("A valid email is required."),
+      .notEmpty().withMessage("Email is required.")
+      .bail() 
+      .isEmail().withMessage("A valid email is required.")
+      .normalizeEmail(), // refer to validator.js docs
 
     // password is required and must be strong password
     body("account_password")
       .trim()
-      .notEmpty()
+      .notEmpty().withMessage("Password is required.")
+      .bail() 
       .isStrongPassword({
         minLength: 12,
         minLowercase: 1,
         minUppercase: 1,
         minNumbers: 1,
         minSymbols: 1,
-      })
-      .withMessage("Password does not meet requirements."),
+      }).withMessage("Password does not meet requirements."),
   ]
 }
 
