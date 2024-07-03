@@ -12,16 +12,18 @@ validate.registrationRules = () => {
       .trim()
       .escape()
       .notEmpty().withMessage("First name is required.")
-      .isLength({ min: 1 }).withMessage("First name must be at least 1 character long.")
-      .bail(), 
+      .bail()
+      .if(body("account_firstname").notEmpty())
+      .isLength({ min: 1 }).withMessage("First name must be at least 1 character long."),
 
     // lastname is required and must be string
     body("account_lastname")
       .trim()
       .escape()
       .notEmpty().withMessage("Last name is required.")
-      .isLength({ min: 2 }).withMessage("Last name must be at least 2 characters long.")
-      .bail(), 
+      .bail()
+      .if(body("account_lastname").notEmpty())
+      .isLength({ min: 2 }).withMessage("Last name must be at least 2 characters long."),
 
     // valid email is required and cannot already exist in the DB
     body("account_email")
