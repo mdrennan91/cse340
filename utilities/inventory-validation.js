@@ -21,7 +21,7 @@ validate.addInventoryRules = () => {
         .escape()
         .notEmpty().withMessage("Make is required.")
         .bail()
-        .isLength({ min: 3 }).withMessage("Make must be at least 3 characters long."),
+        .isLength({ min: 3 }).withMessage("Make must be at least 3 characters."),
   
       // Model is required and must be at least 3 characters long
       body("inv_model")
@@ -29,7 +29,7 @@ validate.addInventoryRules = () => {
         .escape()
         .notEmpty().withMessage("Model is required.")
         .bail()
-        .isLength({ min: 3 }).withMessage("Model must be at least 3 characters long."),
+        .isLength({ min: 3 }).withMessage("Model must be at least 3 characters."),
   
       // Description is required and must be at least 3 characters long
       body("inv_description")
@@ -37,7 +37,7 @@ validate.addInventoryRules = () => {
         .escape()
         .notEmpty().withMessage("Description is required.")
         .bail()
-        .isLength({ min: 3 }).withMessage("Description must be at least 3 characters long."),
+        .isLength({ min: 3 }).withMessage("Description must be 3 characters"),
   
       // Image Path is required
       body("inv_image")
@@ -81,7 +81,7 @@ validate.addInventoryRules = () => {
         .escape()
         .notEmpty().withMessage("Color is required.")
         .bail()
-        .isLength({ min: 3 }).withMessage("Color must be at least 3 characters long.")
+        .isLength({ min: 3 }).withMessage("Color must be at least 3 characters.")
     ];
   };
   
