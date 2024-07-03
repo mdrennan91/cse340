@@ -1024,6 +1024,21 @@ footer a {
   margin-bottom: 1rem;
 }
 
+.form-message {
+  font-size: 1rem;
+  font-style: italic;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.form-warning {
+  font-size: 1rem;
+  font-style: italic;
+  color: red;
+  margin-bottom: 1rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
 
 
 
