@@ -787,6 +787,11 @@ footer a {
   transform: scale(1.03);
 }
 
+.classification-container input:focus {
+  outline: none; 
+  border-color: #004888; 
+}
+
 
 /******* Inventory Form ***************/
 .inventory-container {
