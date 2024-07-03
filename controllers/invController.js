@@ -193,10 +193,16 @@ invCont.buildDeleteClassificationView = async function (req, res, next) {
 invCont.deleteClassification = async function (req, res, next) {
   try {
     const { classification_id } = req.body;
-    const result = await invModel.deleteClassification(classification_id);
-    if (result) {
-      req.flash("notice", "Classification deleted successfully.");
-      res.redirect("/inv");
+
+    // Delete all inventory items related to this classification
+    await invModel.deleteInventoryByClassificationId(classification_id);
+
+    // Delete the classification
+    const result = await invModel.deleteClassificationById(classification_id);
+
+    if (result.rowCount) {
+      req.flash("success", "Classification and related inventory items deleted successfully.");
+      res.redirect("/inv/management");
     } else {
       req.flash("error", "Error deleting classification.");
       res.redirect("/inv/delete-classification");
