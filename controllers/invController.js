@@ -35,4 +35,111 @@ invCont.buildByInvId = async function (req, res, next) {
   });
 };
 
+/* ***************************
+ *  Build management view
+ * ************************** */
+invCont.buildManagementView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/management", {
+    title: "Inventory Management",
+    nav,
+    messages: req.flash("notice"),
+    errors: null,
+  });
+};
+
+/* ***************************
+ *  Build add classification view
+ * ************************** */
+invCont.buildAddClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    messages: req.flash("notice"),
+    errors: null,
+  });
+};
+
+/* ***************************
+ *  Handle add classification form submission
+ * ************************** */
+invCont.addClassification = async function (req, res, next) {
+  const { classification_name } = req.body;
+  const result = await invModel.addClassification(classification_name);
+  if (result) {
+    req.flash("notice", "Classification added successfully.");
+    let nav = await utilities.getNav();
+    res.status(201).render("./inventory/management", {
+      title: "Inventory Management",
+      nav,
+      messages: req.flash("notice"),
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Error adding classification.");
+    let nav = await utilities.getNav();
+    res.status(500).render("./inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      messages: req.flash("notice"),
+      errors: null,
+    });
+  }
+};
+
+/* ***************************
+ *  Build add inventory view
+ * ************************** */
+invCont.buildAddInventoryView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationList();
+  res.render("./inventory/add-inventory", {
+    title: "Add New Vehicle",
+    nav,
+    classificationList,
+    messages: req.flash("notice"),
+    errors: null,
+  });
+};
+
+/* ***************************
+ *  Handle add inventory form submission
+ * ************************** */
+invCont.addInventory = async function (req, res, next) {
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body;
+  const result = await invModel.addInventory({
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+  });
+  if (result) {
+    req.flash("notice", "Vehicle added successfully.");
+    let nav = await utilities.getNav();
+    res.status(201).render("./inventory/management", {
+      title: "Inventory Management",
+      nav,
+      messages: req.flash("notice"),
+      errors: null,
+    });
+  } else {
+    req.flash("notice", "Error adding vehicle.");
+    let nav = await utilities.getNav();
+    res.status(500).render("./inventory/add-inventory", {
+      title: "Add New Vehicle",
+      nav,
+      classificationList: await utilities.buildClassificationList(classification_id),
+      messages: req.flash("notice"),
+      errors: null,
+    });
+  }
+};
+
 module.exports = invCont
