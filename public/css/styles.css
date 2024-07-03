@@ -1028,16 +1028,18 @@ footer a {
   font-size: 1rem;
   font-style: italic;
   color: #000000;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   font-family: 'noto sans display', 'sans-serif';
+  text-align: center;
 }
 
 .form-warning {
   font-size: 1rem;
   font-style: italic;
   color: red;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   font-family: 'noto sans display', 'sans-serif';
+  text-align: center;
 }
 
 
