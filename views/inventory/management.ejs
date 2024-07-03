@@ -1,0 +1,12 @@
+<div class="management-container">
+    <h1>Inventory Management</h1>
+    <% if (messages.length > 0) { %>
+        <div class="flash-messages">
+            <% messages.forEach(message => { %>
+                <p><%= message %></p>
+            <% }) %>
+        </div>
+    <% } %>
+    <a href="/inv/add-classification">Add New Classification</a>
+    <a href="/inv/add-inventory">Add New Inventory Item</a>
+</div>
