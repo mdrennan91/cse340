@@ -20,6 +20,10 @@ body, p, ul, li {
   min-height: 100vh;
 }
 
+main {
+  margin-bottom: 40px;
+}
+
 
 /******* Header ***************/
 #top-header {
