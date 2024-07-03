@@ -809,12 +809,12 @@ footer a {
   color: #005096;
 }
 
-.inventory-container .form-note {
+/* .inventory-container .form-note {
   font-size: 0.9rem;
   font-style: italic;
   color: #666;
   margin-bottom: 1rem;
-}
+} */
 
 .inventory-container form {
   width: 100%;
@@ -846,14 +846,14 @@ footer a {
 
 .inventory-container input:required:invalid,
 .inventory-container textarea:required:invalid,
-.inventory-container select {
+.inventory-container select:required:invalid {
   border-left-color: red;
   border-left-width: 6px; 
 }
 
 .inventory-container input:required:valid,
 .inventory-container textarea:required:valid,
-.inventory-container select {
+.inventory-container select:required:valid {
   border-left-color: green;
   border-left-width: 6px; 
 }
@@ -880,6 +880,7 @@ footer a {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
   text-align: center;
   text-decoration: none;
+  margin-top: 40px;
 }
 
 .inventory-container button:hover {
@@ -891,7 +892,7 @@ footer a {
 .inventory-container p.form-note {
   font-size: 0.9rem;
   font-style: italic;
-  color: #666;
+  color: #000000;
   margin-bottom: 1rem;
 }
 

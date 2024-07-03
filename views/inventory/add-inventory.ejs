@@ -39,3 +39,24 @@
         <button type="submit">Add Vehicle</button>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const classificationSelect = document.getElementById('classificationList');
+
+        classificationSelect.addEventListener('change', function() {
+            if (classificationSelect.value) {
+                classificationSelect.style.borderLeftColor = 'green';
+            } else {
+                classificationSelect.style.borderLeftColor = 'red';
+            }
+        });
+
+        // Initialize border color based on initial value
+        if (classificationSelect.value) {
+            classificationSelect.style.borderLeftColor = 'green';
+        } else {
+            classificationSelect.style.borderLeftColor = 'red';
+        }
+    });
+</script>
