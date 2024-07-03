@@ -12,67 +12,75 @@ validate.addInventoryRules = () => {
         .trim()
         .escape()
         .notEmpty().withMessage("Classification is required.")
+        .bail()
         .isInt().withMessage("Invalid classification ID."),
-      
+  
       // Make is required and must be at least 3 characters long
       body("inv_make")
         .trim()
         .escape()
         .notEmpty().withMessage("Make is required.")
+        .bail()
         .isLength({ min: 3 }).withMessage("Make must be at least 3 characters long."),
-      
+  
       // Model is required and must be at least 3 characters long
       body("inv_model")
         .trim()
         .escape()
         .notEmpty().withMessage("Model is required.")
+        .bail()
         .isLength({ min: 3 }).withMessage("Model must be at least 3 characters long."),
-      
+  
       // Description is required and must be at least 3 characters long
       body("inv_description")
         .trim()
         .escape()
         .notEmpty().withMessage("Description is required.")
+        .bail()
         .isLength({ min: 3 }).withMessage("Description must be at least 3 characters long."),
-      
+  
       // Image Path is required
       body("inv_image")
         .trim()
         .escape()
         .notEmpty().withMessage("Image Path is required."),
-      
+  
       // Thumbnail Path is required
       body("inv_thumbnail")
         .trim()
         .escape()
         .notEmpty().withMessage("Thumbnail Path is required."),
-      
+  
       // Price is required and must be a valid number
       body("inv_price")
         .trim()
         .escape()
         .notEmpty().withMessage("Price is required.")
+        .bail()
         .isFloat({ min: 0 }).withMessage("Invalid price."),
-      
+  
       // Year is required and must be a 4-digit year
       body("inv_year")
         .trim()
         .escape()
         .notEmpty().withMessage("Year is required.")
+        .bail()
         .isInt({ min: 1900, max: new Date().getFullYear() + 1 }).withMessage("Invalid year."),
-      
+  
       // Miles is required and must be a valid number
       body("inv_miles")
         .trim()
         .escape()
         .notEmpty().withMessage("Miles is required.")
+        .bail()
         .isInt({ min: 0 }).withMessage("Invalid miles."),
-      
+  
       // Color is required and must be at least 3 characters long
       body("inv_color")
         .trim()
         .escape()
         .notEmpty().withMessage("Color is required.")
+        .bail()
         .isLength({ min: 3 }).withMessage("Color must be at least 3 characters long.")
     ];
   };
