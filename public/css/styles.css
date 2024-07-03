@@ -792,6 +792,16 @@ footer a {
   border-color: #004888; 
 }
 
+.classification-container input:required:invalid {
+  border-left-color: red;
+  border-left-width: 6px; 
+}
+
+.classification-container input:required:valid {
+  border-left-color: green;
+  border-left-width: 6px; 
+}
+
 
 /******* Inventory Form ***************/
 .inventory-container {
