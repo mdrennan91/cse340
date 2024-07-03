@@ -29,7 +29,7 @@
         <label for="inv_thumbnail">Thumbnail Path:</label>
         <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= inv_thumbnail || '' %>" placeholder="/example/folder/image.png" required>
         <label for="inv_price">Price:</label>
-        <input type="text" id="inv_price" name="inv_price" value="<%= inv_price || '' %>" placeholder="decimal or integer" pattern="^\d{1,3}(,\d{3})*(\.\d{1,2})?$" required>
+        <input type="text" id="inv_price" name="inv_price" value="<%= inv_price || '' %>" placeholder="decimal or integer" pattern="^\d+(\.\d{1,2})?$" required>
         <label for="inv_year">Year:</label>
         <input type="text" id="inv_year" name="inv_year" value="<%= inv_year || '' %>" placeholder="4-digit year" pattern="\d{4}" required>
         <label for="inv_miles">Miles:</label>
