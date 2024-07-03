@@ -135,7 +135,7 @@ invCont.addInventory = async function (req, res, next) {
       inv_color,
     })
     if (result) {
-      req.flash("success", "Vehicle added successfully.")
+      req.flash("notice", "Vehicle added successfully.")
       let nav = await utilities.getNav()
       res.status(201).render("./inventory/management", {
         title: "Inventory Management",
@@ -144,7 +144,7 @@ invCont.addInventory = async function (req, res, next) {
         errors: null,
       })
     } else {
-      req.flash("error", "Error adding vehicle.")
+      req.flash("notice", "Error adding vehicle.")
       let nav = await utilities.getNav()
       res.status(500).render("./inventory/add-inventory", {
         title: "Add New Vehicle",
