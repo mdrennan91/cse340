@@ -858,6 +858,14 @@ footer a {
   border-left-width: 6px; 
 }
 
+.inventory-container textarea {
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.inventory-container textarea::placeholder {
+  font-family: 'noto sans display', 'sans-serif'; 
+}
+
 .inventory-container .input-indicator {
   position: absolute;
   left: 10px;
@@ -890,7 +898,7 @@ footer a {
 }
 
 .inventory-container p.form-note {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: #000000;
   margin-bottom: 1rem;

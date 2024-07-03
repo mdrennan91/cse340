@@ -2,6 +2,7 @@
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
+const validate = require("../utilities/inventory-validation");
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
@@ -22,7 +23,7 @@ router.post("/add-classification", invController.addClassification);
 router.get("/add-inventory", invController.buildAddInventoryView);
 
 // Route to handle add inventory form submission
-router.post("/add-inventory", invController.addInventory);
+router.post("/add-inventory", validate.addInventoryRules(), validate.checkInventoryData, invController.addInventory);
 
 // Route to trigger a 500 error
 router.get("/trigger-error", (req, res, next) => {
