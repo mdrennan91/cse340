@@ -706,6 +706,7 @@ footer a {
 
 .management-container a {
   display: block;
+  width: 100%;
   margin-bottom: 1rem;
   padding: 0.7rem;
   background-color: #004888;
