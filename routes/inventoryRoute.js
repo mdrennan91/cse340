@@ -25,6 +25,12 @@ router.get("/add-inventory", invController.buildAddInventoryView);
 // Route to handle add inventory form submission
 router.post("/add-inventory", validate.addInventoryRules(), validate.checkInventoryData, invController.addInventory);
 
+// Route to display delete classification form
+router.get("/delete-classification", invController.buildDeleteClassificationView);
+
+// Route to handle delete classification form submission
+router.post("/delete-classification", validate.deleteClassificationRules(), validate.checkDeleteClassificationData, invController.deleteClassification);
+
 // Route to trigger a 500 error
 router.get("/trigger-error", (req, res, next) => {
     next(new Error("Intentional error triggered!"));

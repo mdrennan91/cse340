@@ -104,5 +104,40 @@ validate.addInventoryRules = () => {
     }
     next();
   };
+
+  
+  /*  **********************************
+*  Delete Classification Data Validation Rules
+* ********************************* */
+validate.deleteClassificationRules = () => {
+    return [
+      // classification_id is required and must be an integer
+      body("classification_id")
+        .trim()
+        .escape()
+        .notEmpty().withMessage("Classification is required.")
+        .isInt().withMessage("Invalid classification ID.")
+    ];
+  };
+  
+  /* ******************************
+  * Check data and return errors or continue to deletion
+  * ***************************** */
+  validate.checkDeleteClassificationData = async (req, res, next) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav();
+      let classificationList = await utilities.buildClassificationList(req.body.classification_id);
+      res.render("inventory/delete-classification", {
+        errors,
+        title: "Delete Classification",
+        nav,
+        classificationList,
+        ...req.body
+      });
+      return;
+    }
+    next();
+  };
   
   module.exports = validate;

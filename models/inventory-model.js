@@ -78,5 +78,19 @@ async function addInventory({ classification_id, inv_make, inv_model, inv_descri
 }
 
 
+/* ***************************
+ *  Delete classification by ID
+ * ************************** */
+async function deleteClassification(classification_id) {
+  try {
+    const query = "DELETE FROM public.classification WHERE classification_id = $1";
+    const result = await pool.query(query, [classification_id]);
+    return result.rowCount;
+  } catch (error) {
+    console.error("deleteClassification error " + error);
+    return null;
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, addClassification, addInventory};
+
+module.exports = { getClassifications, getInventoryByClassificationId, getInventoryById, addClassification, addInventory, deleteClassification };
