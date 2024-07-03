@@ -920,6 +920,110 @@ footer a {
 }
 
 
+/******* Delete Form ***************/
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  max-width: 400px;
+}
+
+.delete-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'roboto', 'noto sans display';
+  color: #005096;
+}
+
+/* .inventory-container .form-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
+} */
+
+.delete-container form {
+  width: 100%;
+}
+
+.delete-container label {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.delete-container input,
+.delete-container select {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 1rem; 
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  border-left-width: 10px; 
+}
+
+.delete-container input:focus,
+.delete-container select {
+  outline: none; 
+  border-color: #004888; 
+}
+
+.delete-container input:required:invalid,
+.delete-container select:required:invalid {
+  border-left-color: red;
+  border-left-width: 6px; 
+}
+
+.delete-container input:required:valid,
+.delete-container select:required:valid {
+  border-left-color: green;
+  border-left-width: 6px; 
+}
+
+.delete-container .input-indicator {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.delete-container button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #004888;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'noto sans display', 'sans-serif';
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-decoration: none;
+  margin-top: 40px;
+}
+
+.delete-container button:hover {
+  background-color: #005096;
+  transition: all 0.4s ease 0s;
+  transform: scale(1.03);
+}
+
+.delete-container p.form-note {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
 
 
 
