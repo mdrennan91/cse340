@@ -202,7 +202,7 @@ invCont.deleteClassification = async function (req, res, next) {
 
     if (result.rowCount) {
       req.flash("success", "Classification and related inventory items deleted successfully.");
-      res.redirect("/inv/management");
+      res.redirect("/inv");
     } else {
       req.flash("error", "Error deleting classification.");
       res.redirect("/inv/delete-classification");
