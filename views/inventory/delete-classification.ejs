@@ -1,11 +1,11 @@
 <div class="delete-container">
     <h1>Delete Classification</h1>
-    <% if (Array.isArray(messages) && messages.length > 0) { %>
-      <div class="flash-messages">
-        <% messages.forEach(message => { %>
-          <p><%= message %></p>
-        <% }) %>
-      </div>
+    <% if (messages.length > 0) { %>
+        <div class="flash-messages">
+            <% messages.forEach(message => { %>
+                <p><%= message %></p>
+            <% }) %>
+        </div>
     <% } %>
     <% if (errors) { %>
       <ul class="notice">
