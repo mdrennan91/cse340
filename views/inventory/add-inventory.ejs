@@ -19,11 +19,11 @@
         <label for="classification_id">Classification:</label>
         <%- classificationList %>
         <label for="inv_make">Make:</label>
-        <input type="text" id="inv_make" name="inv_make" value="<%= inv_make || '' %>" placeholder="Minimum of 3 characters" minlength="3" required>
+        <input type="text" id="inv_make" name="inv_make" value="<%= inv_make || '' %>" placeholder="minimum of 3 characters" minlength="3" required>
         <label for="inv_model">Model:</label>
-        <input type="text" id="inv_model" name="inv_model" value="<%= inv_model || '' %>" placeholder="Minimum of 3 characters" minlength="3" required>
+        <input type="text" id="inv_model" name="inv_model" value="<%= inv_model || '' %>" placeholder="minimum of 3 characters" minlength="3" required>
         <label for="inv_description">Description:</label>
-        <textarea id="inv_description" name="inv_description" placeholder="Add vehicle description here." minlength="3" required style="width: 334px;"></textarea>
+        <textarea id="inv_description" name="inv_description" placeholder="minimum of 3 characters" minlength="3" required style="width: 334px;"></textarea>
         <label for="inv_image">Image Path:</label>
         <input type="text" id="inv_image" name="inv_image" value="<%= inv_image || '' %>" placeholder="/example/folder/image.png" required>
         <label for="inv_thumbnail">Thumbnail Path:</label>
@@ -33,9 +33,9 @@
         <label for="inv_year">Year:</label>
         <input type="text" id="inv_year" name="inv_year" value="<%= inv_year || '' %>" placeholder="4-digit year" pattern="\d{4}" required>
         <label for="inv_miles">Miles:</label>
-        <input type="text" id="inv_miles" name="inv_miles" value="<%= inv_miles || '' %>" placeholder="digits only" pattern="^\d+$" required>
+        <input type="text" id="inv_miles" name="inv_miles" value="<%= inv_miles || '' %>" placeholder="digits only, no comma" pattern="^\d+$" required>
         <label for="inv_color">Color:</label>
-        <input type="text" id="inv_color" name="inv_color" value="<%= inv_color || '' %>" placeholder="Enter vehicle color here." minlength="3" required>
+        <input type="text" id="inv_color" name="inv_color" value="<%= inv_color || '' %>" placeholder="minimum of 3 characters" minlength="3" required>
         <button type="submit">Add Vehicle</button>
     </form>
 </div>

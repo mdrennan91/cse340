@@ -827,7 +827,8 @@ footer a {
 }
 
 .inventory-container input,
-.inventory-container textarea {
+.inventory-container textarea,
+.inventory-container select {
   width: 100%;
   padding: 0.5rem 0.5rem 0.5rem 1rem; 
   margin-bottom: 0.5rem;
@@ -837,19 +838,22 @@ footer a {
 }
 
 .inventory-container input:focus,
-.inventory-container textarea:focus {
+.inventory-container textarea:focus,
+.inventory-container select {
   outline: none; 
   border-color: #004888; 
 }
 
 .inventory-container input:required:invalid,
-.inventory-container textarea:required:invalid {
+.inventory-container textarea:required:invalid,
+.inventory-container select {
   border-left-color: red;
   border-left-width: 6px; 
 }
 
 .inventory-container input:required:valid,
-.inventory-container textarea:required:valid {
+.inventory-container textarea:required:valid,
+.inventory-container select {
   border-left-color: green;
   border-left-width: 6px; 
 }
