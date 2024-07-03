@@ -63,30 +63,17 @@ async function addClassification(classificationName) {
 
 
 /* ***************************
- *  Add new inventory item
+ *  Add a new inventory item
  * ************************** */
-async function addInventory({
-  classification_id,
-  inv_make,
-  inv_model,
-  inv_description,
-  inv_image,
-  inv_thumbnail,
-  inv_price,
-  inv_year,
-  inv_miles,
-  inv_color
-}) {
+async function addInventory({ classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color }) {
   try {
-    const result = await pool.query(
-      `INSERT INTO public.inventory 
-      (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING inv_id`,
-      [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color]
-    )
-    return result.rows[0]
+    const sql = `INSERT INTO public.inventory 
+                 (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) 
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`;
+    const values = [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color];
+    return await pool.query(sql, values);
   } catch (error) {
-    console.error("addInventory error " + error)
+    console.error("addInventory error " + error);
   }
 }
 

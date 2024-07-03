@@ -107,8 +107,7 @@ invCont.buildAddInventoryView = async function (req, res, next) {
  *  Handle add inventory form submission
  * ************************** */
 invCont.addInventory = async function (req, res, next) {
-  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body;
-  const result = await invModel.addInventory({
+  const {
     classification_id,
     inv_make,
     inv_model,
@@ -119,23 +118,50 @@ invCont.addInventory = async function (req, res, next) {
     inv_year,
     inv_miles,
     inv_color,
-  });
-  if (result) {
-    req.flash("notice", "Vehicle added successfully.");
-    let nav = await utilities.getNav();
-    res.status(201).render("./inventory/management", {
-      title: "Inventory Management",
-      nav,
-      messages: req.flash("notice"),
-      errors: null,
+  } = req.body;
+
+  try {
+    const result = await invModel.addInventory({
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
     });
-  } else {
+
+    if (result.rowCount) {
+      req.flash("notice", "Vehicle added successfully.");
+      let nav = await utilities.getNav();
+      res.status(201).render("./inventory/management", {
+        title: "Inventory Management",
+        nav,
+        messages: req.flash("notice"),
+        errors: null,
+      });
+    } else {
+      req.flash("notice", "Error adding vehicle.");
+      let nav = await utilities.getNav();
+      res.status(500).render("./inventory/add-inventory", {
+        title: "Add New Vehicle",
+        nav,
+        classificationList: await utilities.buildClassificationList(),
+        messages: req.flash("notice"),
+        errors: null,
+      });
+    }
+  } catch (error) {
+    console.error("addInventory error " + error);
     req.flash("notice", "Error adding vehicle.");
     let nav = await utilities.getNav();
     res.status(500).render("./inventory/add-inventory", {
       title: "Add New Vehicle",
       nav,
-      classificationList: await utilities.buildClassificationList(classification_id),
+      classificationList: await utilities.buildClassificationList(),
       messages: req.flash("notice"),
       errors: null,
     });
