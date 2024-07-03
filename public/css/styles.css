@@ -804,10 +804,16 @@ footer a {
 
 .inventory-container h1 {
   font-size: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 0;
+  margin-bottom: 1rem;
   font-family: 'roboto', 'noto sans display';
-  color: #004888;
+  color: #005096;
+}
+
+.inventory-container .form-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .inventory-container form {
@@ -816,18 +822,46 @@ footer a {
 
 .inventory-container label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   font-family: 'noto sans display', 'sans-serif';
 }
 
 .inventory-container input,
-.inventory-container textarea,
-.inventory-container select {
+.inventory-container textarea {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem; 
+  margin-bottom: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 5px;
+  border-left-width: 10px; 
+}
+
+.inventory-container input:focus,
+.inventory-container textarea:focus {
+  outline: none; 
+  border-color: #004888; 
+}
+
+.inventory-container input:required:invalid,
+.inventory-container textarea:required:invalid {
+  border-left-color: red;
+  border-left-width: 6px; 
+}
+
+.inventory-container input:required:valid,
+.inventory-container textarea:required:valid {
+  border-left-color: green;
+  border-left-width: 6px; 
+}
+
+.inventory-container .input-indicator {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 .inventory-container button {
@@ -850,37 +884,11 @@ footer a {
   transform: scale(1.03);
 }
 
-.form-note {
-  font-size: 0.9rem; 
+.inventory-container p.form-note {
+  font-size: 0.9rem;
   font-style: italic;
-  color: #111111; 
-  margin-bottom: 1rem; 
-  text-align: center; 
-}
-
-.inventory-container input:focus {
-  outline: none; 
-  border-color: #004888; 
-}
-
-.inventory-container input:required:invalid {
-  border-left-color: red;
-  border-left-width: 6px; 
-}
-
-.inventory-container input:required:valid {
-  border-left-color: green;
-  border-left-width: 6px; 
-}
-
-.inventory-container .input-indicator {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 
