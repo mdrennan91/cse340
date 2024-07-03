@@ -857,6 +857,31 @@ footer a {
   text-align: center; 
 }
 
+.inventory-container input:focus {
+  outline: none; 
+  border-color: #004888; 
+}
+
+.inventory-container input:required:invalid {
+  border-left-color: red;
+  border-left-width: 6px; 
+}
+
+.inventory-container input:required:valid {
+  border-left-color: green;
+  border-left-width: 6px; 
+}
+
+.inventory-container .input-indicator {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
 
 
 
