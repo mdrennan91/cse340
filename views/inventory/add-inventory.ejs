@@ -16,7 +16,7 @@
         </ul>
     <% } %>
     <form action="/inv/add-inventory" method="POST" novalidate>
-        <label for="classification_id">Classification:</label>
+        <label for="classificationList">Classification:</label>
         <%- classificationList %>
         <label for="inv_make">Make:</label>
         <input type="text" id="inv_make" name="inv_make" value="<%= inv_make || '' %>" placeholder="minimum of 3 characters" minlength="3" required>
