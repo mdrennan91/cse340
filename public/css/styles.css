@@ -1040,7 +1040,7 @@ footer a {
 .form-warning {
   font-size: 1rem;
   font-style: italic;
-  color: red;
+  color: rgb(19, 19, 19);
   margin-bottom: 3rem;
   font-family: 'noto sans display', 'sans-serif';
   text-align: center;
