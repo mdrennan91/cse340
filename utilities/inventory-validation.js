@@ -131,7 +131,8 @@ validate.checkClassificationData = async (req, res, next) => {
           errors,
           title: "Add New Classification",
           nav,
-          ...req.body
+          messages: req.flash("notice"),
+          classification_name: req.body.classification_name
       });
       return;
   }

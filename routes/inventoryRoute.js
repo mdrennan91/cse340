@@ -17,9 +17,6 @@ router.get("/", invController.buildManagementView);
 router.get("/add-classification", invController.buildAddClassificationView);
 
 // Route to handle add classification form submission
-// router.post("/add-classification", invController.addClassification);
-
-// Route to handle add classification form submission
 router.post("/add-classification", validate.addClassificationRules(), validate.checkClassificationData, invController.addClassification);
 
 // Route to display add inventory form

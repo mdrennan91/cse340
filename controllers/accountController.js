@@ -99,7 +99,7 @@ async function processLogin(req, res) {
 
   if (user) {
     req.flash("notice", "Login successful!");
-    res.redirect("/"); 
+    res.redirect("account/login"); 
   } else {
     req.flash("notice", "Login failed. Please check your email and password.");
     res.render("account/login", {
