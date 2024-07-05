@@ -1,23 +1,26 @@
 <div class="classification-container">
     <h1>Add New Classification</h1>
     <p class="form-message">Please type classification name in the input below to add new classification.</p>
-    <% if (messages.length > 0) { %>
+
+    <% if (Array.isArray(messages) && messages.length > 0) { %>
         <div class="flash-messages">
             <% messages.forEach(message => { %>
                 <p><%= message %></p>
             <% }) %>
         </div>
     <% } %>
+
     <% if (errors) { %>
-        <ul class="error-messages">
+        <ul class="notice">
             <% errors.array().forEach(error => { %>
                 <li><%= error.msg %></li>
             <% }) %>
         </ul>
     <% } %>
+
     <form action="/inv/add-classification" method="POST" novalidate>
-        <label for="classificationName">Classification Name:</label>
-        <input type="text" id="classificationName" name="classification_name" minlength="3" placeholder="minimum of 3 characters" required pattern="^[a-zA-Z0-9]+$">
+        <label for="classification_name">Classification Name:</label>
+        <input type="text" id="classification_name" name="classification_name" minlength="3" placeholder="minimum of 3 characters" required>
         <button type="submit">Add Classification</button>
     </form>
 </div>

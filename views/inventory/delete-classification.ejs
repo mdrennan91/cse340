@@ -1,13 +1,15 @@
 <div class="delete-container">
     <h1>Delete Classification</h1>
     <p class="form-warning">Warning! Deleting a classification will permanently delete all data within that classification.</p>
-    <% if (messages.length > 0) { %>
-        <div class="flash-messages">
-            <% messages.forEach(message => { %>
-                <p><%= message %></p>
-            <% }) %>
-        </div>
+
+    <% if (messages && messages.length > 0) { %>
+      <div class="flash-messages">
+          <% messages.forEach(message => { %>
+              <p><%= message %></p>
+          <% }) %>
+      </div>
     <% } %>
+
     <% if (errors) { %>
       <ul class="notice">
         <% errors.array().forEach(error => { %>
@@ -15,6 +17,7 @@
         <% }) %>
       </ul>
     <% } %>
+
     <form action="/inv/delete-classification" method="POST" novalidate>
       <label for="classificationList">Classification:</label>
       <%- classificationList %>

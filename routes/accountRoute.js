@@ -22,10 +22,26 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 );
 
+// Route to handle login form submission
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.processLogin)
+);
+
 // Error handling middleware
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
 });
+
+// Process the login attempt
+// router.post(
+//     "/login",
+//     (req, res) => {
+//       res.status(200).send('login process')
+//     }
+//   )
 
 module.exports = router;

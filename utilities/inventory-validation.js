@@ -85,9 +85,9 @@ validate.addInventoryRules = () => {
     ];
   };
   
-  /* ******************************
-  * Check data and return errors or continue to inventory submission
-  * ***************************** */
+/* ******************************
+* Check data and return errors or continue to inventory submission
+* ***************************** */
   validate.checkInventoryData = async (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -105,8 +105,40 @@ validate.addInventoryRules = () => {
     next();
   };
 
+/*  **********************************
+*  Add Classification Data Validation Rules
+* ********************************* */
+validate.addClassificationRules = () => {
+  return [
+      // classification_name is required and must be at least 3 characters long
+      body("classification_name")
+          .trim()
+          .escape()
+          .notEmpty().withMessage("Classification name is required.")
+          .bail()
+          .isLength({ min: 3 }).withMessage("Classification name must be at least 3 characters long.")
+  ];
+};
+
+/* ******************************
+* Check data and return errors or continue to classification submission
+* ***************************** */
+validate.checkClassificationData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      let nav = await utilities.getNav();
+      res.render("inventory/add-classification", {
+          errors,
+          title: "Add New Classification",
+          nav,
+          ...req.body
+      });
+      return;
+  }
+  next();
+};
   
-  /*  **********************************
+/*  **********************************
 *  Delete Classification Data Validation Rules
 * ********************************* */
 validate.deleteClassificationRules = () => {
@@ -120,9 +152,9 @@ validate.deleteClassificationRules = () => {
     ];
   };
   
-  /* ******************************
-  * Check data and return errors or continue to deletion
-  * ***************************** */
+/* ******************************
+* Check data and return errors or continue to deletion
+* ***************************** */
   validate.checkDeleteClassificationData = async (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {

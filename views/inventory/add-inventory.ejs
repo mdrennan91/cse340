@@ -1,6 +1,7 @@
 <div class="inventory-container">
     <h1>Add New Vehicle</h1>
     <p class="form-note">- All fields are required -</p>
+    
     <% if (Array.isArray(messages) && messages.length > 0) { %>
         <div class="flash-messages">
           <% messages.forEach(message => { %>
@@ -8,6 +9,7 @@
           <% }) %>
         </div>
     <% } %>
+
     <% if (errors) { %>
         <ul class="notice">
             <% errors.array().forEach(error => { %>
@@ -15,6 +17,7 @@
             <% }) %>
         </ul>
     <% } %>
+
     <form action="/inv/add-inventory" method="POST" novalidate>
         <label for="classificationList">Classification:</label>
         <%- classificationList %>
