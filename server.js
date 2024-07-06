@@ -17,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute.js")
 const accountRoute = require("./routes/accountRoute.js") 
 const utilities = require("./utilities/"); 
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser")
 
 
 
@@ -44,6 +45,7 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json()) 
 app.use(bodyParser.urlencoded({ extended: true })) 
+app.use(cookieParser())
 
 
 /* ***********************

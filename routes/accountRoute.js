@@ -24,7 +24,7 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  utilities.handleErrors(accountController.processLogin)
+  utilities.handleErrors(accountController.accountLogin)
 );
 
 // Error handling middleware
@@ -33,12 +33,7 @@ router.use((err, req, res, next) => {
     res.status(500).send("Something broke!");
 });
 
-// Process the login attempt
-// router.post(
-//     "/login",
-//     (req, res) => {
-//       res.status(200).send('login process')
-//     }
-//   )
+// Route for account management view
+router.get("/", utilities.checkJWTToken, utilities.handleErrors(accountController.buildAccountManagement))
 
 module.exports = router;

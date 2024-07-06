@@ -1046,6 +1046,28 @@ footer a {
   text-align: center;
 }
 
+/******* Manage ***************/
+.manage h1 {
+  font-size: 2rem;
+  margin: 1rem;
+  font-family: 'roboto', 'noto sans display';
+  color: #005096;
+}
+
+.manage p {
+  font-size: 1.2rem;
+  margin: 1.2rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+
+
+
+
+
+
+
+
 
 
 

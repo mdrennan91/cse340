@@ -1,0 +1,22 @@
+<div class="manage">
+    <h1>Account Management</h1>
+    <p>You're logged in</p>
+
+    <% if (Array.isArray(messages) && messages.length > 0) { %>
+        <div class="flash-messages">
+            <% messages.forEach(message => { %>
+                <p><%= message %></p>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>
+
+
