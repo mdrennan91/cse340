@@ -32,11 +32,11 @@
         <label for="inv_thumbnail">Thumbnail Path:</label>
         <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= inv_thumbnail || '' %>" placeholder="/example/folder/image.png" required>
         <label for="inv_price">Price:</label>
-        <input type="text" id="inv_price" name="inv_price" value="<%= inv_price || '' %>" placeholder="decimal or integer" pattern="^\d+(\.\d{1,2})?$" required>
+        <input type="number" id="inv_price" name="inv_price" value="<%= inv_price || '' %>" placeholder="decimal or integer" step="0.01" required>
         <label for="inv_year">Year:</label>
-        <input type="text" id="inv_year" name="inv_year" value="<%= inv_year || '' %>" placeholder="4-digit year" pattern="\d{4}" required>
+        <input type="number" id="inv_year" name="inv_year" value="<%= inv_year || '' %>" placeholder="4-digit year" min="1900" max="<%= new Date().getFullYear() + 1 %>" required>
         <label for="inv_miles">Miles:</label>
-        <input type="text" id="inv_miles" name="inv_miles" value="<%= inv_miles || '' %>" placeholder="digits only, no comma" pattern="^\d+$" required>
+        <input type="number" id="inv_miles" name="inv_miles" value="<%= inv_miles || '' %>" placeholder="digits only, no comma" required>
         <label for="inv_color">Color:</label>
         <input type="text" id="inv_color" name="inv_color" value="<%= inv_color || '' %>" placeholder="minimum of 3 characters" minlength="3" required>
         <button type="submit">Add Vehicle</button>
