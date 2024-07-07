@@ -27,13 +27,14 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 );
 
+// Route for account management view
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
+
 // Error handling middleware
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
 });
 
-// Route for account management view
-router.get("/", utilities.checkJWTToken, utilities.handleErrors(accountController.buildAccountManagement))
 
 module.exports = router;
