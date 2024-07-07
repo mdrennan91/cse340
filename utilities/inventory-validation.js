@@ -42,13 +42,11 @@ validate.addInventoryRules = () => {
       // Image Path is required
       body("inv_image")
         .trim()
-        .escape()
         .notEmpty().withMessage("Image Path is required."),
   
       // Thumbnail Path is required
       body("inv_thumbnail")
         .trim()
-        .escape()
         .notEmpty().withMessage("Thumbnail Path is required."),
   
       // Price is required and must be a valid number
@@ -104,6 +102,27 @@ validate.addInventoryRules = () => {
     }
     next();
   };
+
+/* ******************************
+* Check data and return errors or continue to inventory update
+* ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    let classificationList = await utilities.buildClassificationList(req.body.classification_id);
+    const itemName = `${req.body.inv_make} ${req.body.inv_model}`;
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit " + itemName,
+      nav,
+      classificationList,
+      ...req.body
+    });
+    return;
+  }
+  next();
+};
 
 /*  **********************************
 *  Add Classification Data Validation Rules

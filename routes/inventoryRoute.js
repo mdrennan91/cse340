@@ -32,12 +32,20 @@ router.get("/delete-classification", invController.buildDeleteClassificationView
 // Route to handle delete classification form submission
 router.post("/delete-classification", validate.deleteClassificationRules(), validate.checkDeleteClassificationData, invController.deleteClassification);
 
+// Route to fetch inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Route to build edit inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+
+// Route to handle inventory update form submission
+router.post("/update", validate.addInventoryRules(), validate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+
 // Route to trigger a 500 error
 router.get("/trigger-error", (req, res, next) => {
     next(new Error("Intentional error triggered!"));
   });
 
-// Route to fetch inventory by classification as JSON
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
+  
 module.exports = router;
