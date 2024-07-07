@@ -700,10 +700,59 @@ footer a {
   max-width: 400px;
 }
 
+.management-container select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'noto sans display', 'sans-serif';
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  appearance: none;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.management-container select:focus {
+  border-color: #004888;
+  outline: none;
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay th {
+  background-color: #004888;
+  color: white;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
 .management-container h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
   margin-top: 0;
+  font-family: 'roboto', 'noto sans display';
+  color: #004888;
+}
+
+.management-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   font-family: 'roboto', 'noto sans display';
   color: #004888;
 }
@@ -729,6 +778,37 @@ footer a {
   transition: all 0.4s ease 0s;
   transform: scale(1.03);
 }
+
+#inventoryDisplay td a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem;
+  background-color: #004888;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'noto sans display', 'sans-serif';
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+#inventoryDisplay td a:hover {
+  background-color: #005096;
+  transition: all 0.4s ease 0s;
+  transform: scale(1.03);
+}
+
+#classificationList {
+  border-left-color: transparent !important;
+}
+
+#classificationList:focus {
+  border-left-color: #004888 !important;
+}
+
 
 
 /******* Classification Form ***************/

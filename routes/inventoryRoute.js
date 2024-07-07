@@ -3,6 +3,7 @@ const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const validate = require("../utilities/inventory-validation");
+const utilities = require("../utilities");
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
@@ -35,5 +36,8 @@ router.post("/delete-classification", validate.deleteClassificationRules(), vali
 router.get("/trigger-error", (req, res, next) => {
     next(new Error("Intentional error triggered!"));
   });
+
+// Route to fetch inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
 module.exports = router;
