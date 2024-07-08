@@ -30,6 +30,14 @@ router.post(
 // Route for account management view
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement))
 
+
+// Route for logout
+router.get("/logout", (req, res) => {
+  res.clearCookie('jwt');
+  req.flash('notice', 'You have been logged out.');
+  res.redirect('/');
+});
+
 // Error handling middleware
 router.use((err, req, res, next) => {
     console.error(err.stack);

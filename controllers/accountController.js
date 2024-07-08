@@ -60,7 +60,6 @@ async function registerAccount(req, res) {
     });
   }
 
-
   const regResult = await accountModel.registerAccount(
     account_firstname,
     account_lastname,
@@ -134,6 +133,7 @@ async function buildAccountManagement(req, res) {
     nav,
     errors: null,
     messages: req.flash("notice"),
+    
   })
 }
 

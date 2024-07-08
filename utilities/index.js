@@ -105,23 +105,24 @@ Util.buildClassificationList = async function (classification_id = null) {
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
   if (req.cookies.jwt) {
-   jwt.verify(
-    req.cookies.jwt,
-    process.env.ACCESS_TOKEN_SECRET,
-    function (err, accountData) {
-     if (err) {
-      req.flash("notice", "Please log in.")
-      res.clearCookie("jwt")
-      return res.redirect("/account/login")
-     }
-     res.locals.accountData = accountData
-     res.locals.loggedin = 1
-     next()
-    })
+    jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+      if (err) {
+        req.flash("notice", "Please log in.")
+        res.clearCookie("jwt")
+        res.locals.loggedin = false;
+        res.locals.accountData = null;
+        return next();
+      }
+      res.locals.accountData = accountData;
+      res.locals.loggedin = true;
+      next();
+    });
   } else {
-   next()
+    res.locals.loggedin = false;
+    res.locals.accountData = null;
+    next();
   }
- }
+};
 
 
  /* ****************************************
@@ -135,5 +136,43 @@ Util.checkJWTToken = (req, res, next) => {
     return res.redirect("/account/login")
   }
  }
+
+/* ****************************************
+// Middleware to check token validity and account type
+**************************************** */
+ Util.checkAdmin = (req, res, next) => {
+  console.log('Checking admin access...');
+  if (res.locals.accountData && (res.locals.accountData.account_type === 'Admin' || res.locals.accountData.account_type === 'Employee')) {
+    next();
+  } else {
+    console.log('Access denied: insufficient permissions');
+    req.flash("notice", "You do not have permission to access this page.");
+    res.redirect("/account/login");
+  }
+};
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkJWTToken = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+      if (err) {
+        req.flash("notice", "Please log in.")
+        res.clearCookie("jwt")
+        res.locals.loggedin = false;
+        res.locals.accountData = null;
+        return next();
+      }
+      res.locals.accountData = accountData;
+      res.locals.loggedin = true;
+      next();
+    });
+  } else {
+    res.locals.loggedin = false;
+    res.locals.accountData = null;
+    next();
+  }
+};
 
 module.exports = Util
