@@ -41,6 +41,12 @@ router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryVi
 // Route to handle inventory update form submission
 router.post("/update", validate.addInventoryRules(), validate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
 
+// Route to display delete confirmation view
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteConfirmationView));
+
+// Route to handle delete inventory form submission
+router.post("/delete", utilities.handleErrors(invController.deleteInventoryItem));
+
 // Route to trigger a 500 error
 router.get("/trigger-error", (req, res, next) => {
     next(new Error("Intentional error triggered!"));
