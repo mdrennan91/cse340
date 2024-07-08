@@ -801,13 +801,13 @@ footer a {
   transform: scale(1.03);
 }
 
-#classificationList {
+/* #classificationList {
   border-left-color: transparent !important;
 }
 
 #classificationList:focus {
   border-left-color: #004888 !important;
-}
+} */
 
 
 
@@ -854,6 +854,7 @@ footer a {
 .classification-container button {
   width: 100%;
   padding: 0.7rem;
+  margin-top: 40px;
   background-color: #004888;
   color: white;
   border: none;
@@ -906,6 +907,7 @@ footer a {
   margin-bottom: 1rem;
   font-family: 'roboto', 'noto sans display';
   color: #005096;
+  text-align: center;
 }
 
 /* .inventory-container .form-note {
@@ -1003,14 +1005,6 @@ footer a {
   margin-bottom: 1rem;
 }
 
-/******* Edit Inventory Form Overrides ***************/
-.edit-inventory-form select#classificationList.edit-classification-list {
-  border-left-color: initial !important;
-}
-
-.edit-inventory-form select#classificationList.edit-classification-list:focus {
-  border-left-color: #004888 !important;
-}
 
 
 /******* Delete Form ***************/
@@ -1149,7 +1143,23 @@ footer a {
   font-family: 'noto sans display', 'sans-serif';
 }
 
+.management-container select {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 1rem; 
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
+/* .management-container select {
+  outline: none; 
+  border-color: #004888; 
+} */
+
+/* .management-container input:focus {
+  outline: none; 
+  border-color: #004888; 
+} */
 
 
 
