@@ -38,6 +38,16 @@ router.get("/logout", (req, res) => {
   res.redirect('/');
 });
 
+// Route to display update account view
+router.get("/update-account/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccountView));
+
+// Route to handle account update form submission
+router.post("/update-account", regValidate.updateAccountRules(), regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccount));
+
+// Route to handle change password form submission
+router.post("/change-password", regValidate.changePasswordRules(), regValidate.checkChangePasswordData, utilities.handleErrors(accountController.changePassword));
+
+
 // Error handling middleware
 router.use((err, req, res, next) => {
     console.error(err.stack);

@@ -116,4 +116,77 @@ validate.checkLoginData = async (req, res, next) => {
   next();
 };
 
+
+/* ******************************
+ * Validation rules and checks for account update
+ * ***************************** */
+validate.updateAccountRules = () => {
+  return [
+      body("account_firstname").trim().isLength({ min: 1 }).withMessage("First name is required."),
+      body("account_lastname").trim().isLength({ min: 1 }).withMessage("Last name is required."),
+      body("account_email").trim().isEmail().withMessage("Valid email is required.")
+  ];
+};
+
+validate.checkUpdateData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      let nav = await utilities.getNav();
+      res.render("account/update-account", {
+          errors,
+          title: "Update Account",
+          nav,
+          accountData: req.body,
+          messages: req.flash("notice")
+      });
+      return;
+  }
+  next();
+};
+
+/* ******************************
+ * Validation rules and checks for changing password
+ * ***************************** */
+validate.changePasswordRules = () => {
+  return [
+    body("new_password").isLength({ min: 12 }).withMessage("Password must be at least 8 characters long.")
+      .matches(/[a-z]/).withMessage("Password must contain at least one lowercase letter.")
+      .matches(/[A-Z]/).withMessage("Password must contain at least one uppercase letter.")
+      .matches(/\d/).withMessage("Password must contain at least one number.")
+      .matches(/[\W_]/).withMessage("Password must contain at least one special character.")
+  ];
+};
+
+validate.checkChangePasswordData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/update-account", {
+      errors,
+      title: "Update Account",
+      nav,
+      accountData: req.body,
+      messages: req.flash("notice")
+    });
+    return;
+  }
+  next();
+};
+
+validate.checkChangePasswordData = async (req, res, next) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      let nav = await utilities.getNav();
+      res.render("account/update-account", {
+          errors,
+          title: "Update Account",
+          nav,
+          accountData: req.body,
+          messages: req.flash("notice")
+      });
+      return;
+  }
+  next();
+};
+
 module.exports = validate;

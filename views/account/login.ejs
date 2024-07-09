@@ -2,7 +2,7 @@
     <h1><%= title %></h1>
   
     <% if (Array.isArray(messages) && messages.length > 0) { %>
-      <div class="flash-messages">
+      <div class="flash-messages1">
         <% messages.forEach(message => { %>
           <p><%= message %></p>
         <% }) %>
@@ -10,7 +10,7 @@
     <% } %>
   
     <% if (errors) { %>
-      <ul class="notice">
+      <ul class="notice1">
         <% errors.array().forEach(error => { %>
           <li><%= error.msg %></li>
         <% }) %>

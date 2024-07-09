@@ -169,7 +169,6 @@ main {
   text-align: left;
   font-family: 'noto sans display', 'sans-serif';
   color: #333;
-  /* font-weight: bold; */
 }
 
 #hero .cta a.cta-button {
@@ -190,7 +189,7 @@ main {
 #hero .cta a.cta-button:hover {
   background-color: #005096;
   transition: all 0.4s ease 0s;
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 
@@ -375,6 +374,13 @@ footer a {
   text-align: center;
   font-size: 1.2rem;
   color: green;
+  font-family: 'Roboto', 'Noto Sans Display', sans-serif;
+}
+
+.notice1 {
+  text-align: center;
+  font-size: 1.2rem;
+  color: red;
   font-family: 'Roboto', 'Noto Sans Display', sans-serif;
 }
 
@@ -608,6 +614,12 @@ footer a {
   font-family: 'noto sans display', 'sans-serif';
 }
 
+.flash-messages1 {
+  margin-bottom: 1rem;
+  color: red;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
 .register-container form {
   width: 100%;
 }
@@ -801,15 +813,6 @@ footer a {
   transform: scale(1.03);
 }
 
-/* #classificationList {
-  border-left-color: transparent !important;
-}
-
-#classificationList:focus {
-  border-left-color: #004888 !important;
-} */
-
-
 
 /******* Classification Form ***************/
 .classification-container {
@@ -909,13 +912,6 @@ footer a {
   color: #005096;
   text-align: center;
 }
-
-/* .inventory-container .form-note {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #666;
-  margin-bottom: 1rem;
-} */
 
 .inventory-container form {
   width: 100%;
@@ -1028,13 +1024,6 @@ footer a {
   font-family: 'roboto', 'noto sans display';
   color: #005096;
 }
-
-/* .inventory-container .form-note {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #666;
-  margin-bottom: 1rem;
-} */
 
 .delete-container form {
   width: 100%;
@@ -1171,7 +1160,7 @@ footer a {
     border-radius: 10px;
     width: 400px;
     text-align: center;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
 .btn {
@@ -1207,8 +1196,186 @@ footer a {
 }
 
 
+/******* Update Account Form ***************/
+.update-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  max-width: 400px;
+}
 
+.update-account h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'roboto', 'noto sans display';
+  color: #005096;
+  text-align: center;
+}
 
+.update-account h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0;
+  font-family: 'roboto', 'noto sans display';
+  color: #161616;
+  text-align: center;
+}
+
+.update-account h3 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  margin-top: 0;
+  font-family: 'roboto', 'noto sans display';
+  color: #005096;
+  text-align: center;
+}
+
+.update-account .flash-messages,
+.update-account .notice {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.update-account .flash-messages p,
+.update-account .notice li {
+  color: #ff0000;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.update-account form {
+  width: 100%;
+}
+
+.update-account label {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.update-account input,
+.update-account textarea,
+.update-account select {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 1rem; 
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  border-left-width: 10px; 
+}
+
+.update-account input:focus,
+.update-account textarea:focus,
+.update-account select:focus {
+  outline: none; 
+  border-color: #004888; 
+}
+
+.update-account input:required:invalid,
+.update-account textarea:required:invalid,
+.update-account select:required:invalid {
+  border-left-color: red;
+  border-left-width: 6px; 
+}
+
+.update-account input:required:valid,
+.update-account textarea:required:valid,
+.update-account select:required:valid {
+  border-left-color: green;
+  border-left-width: 6px; 
+}
+
+.update-account textarea {
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.update-account textarea::placeholder {
+  font-family: 'noto sans display', 'sans-serif'; 
+}
+
+.update-account .input-indicator {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.update-account button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #004888;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'noto sans display', 'sans-serif';
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-decoration: none;
+  margin-top: 40px;
+}
+
+.update-account button:hover {
+  background-color: #005096;
+  transition: all 0.4s ease 0s;
+  transform: scale(1.03);
+}
+
+.update-account p.form-note {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.update-account .account-update-form,
+.update-account .change-password-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  max-width: 400px;
+}
+
+.update-account .account-update-form h3,
+.update-account .change-password-form h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'roboto', 'noto sans display';
+  color: #005096;
+  text-align: center;
+}
+
+.update-account .account-update-form p.form-note,
+.update-account .change-password-form p.form-note {
+  font-size: .9rem;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: 'noto sans display', 'sans-serif';
+}
+
+.update-account .change-password-form p.form-notes {
+  font-size: .9rem;
+  color: #000000;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  text-align: center;
+  font-family: 'noto sans display', 'sans-serif';
+}
 
 
 
