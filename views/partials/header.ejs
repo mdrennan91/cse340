@@ -5,9 +5,10 @@
 
     <div id="tools">
       <% if (locals.loggedin) { %>
-          <span>Welcome, <%= locals.accountData.account_firstname %></span>
-          <a href="/account/update-account/<%= accountData.account_id %>" class="account-button">Account Management</a>
-          <a href="/account/logout" class="account-button">Logout</a>
+        <a href="/account/update-account/<%= locals.accountData.account_id %>" class="welcome-name">
+          Welcome <%= locals.accountData.account_firstname %>
+        </a>
+        <a href="/account/logout" class="account-button">Logout</a>
       <% } else { %>
           <a href="/account/login" class="account-button">My Account</a>
       <% } %>

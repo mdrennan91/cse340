@@ -100,24 +100,28 @@ Util.buildClassificationList = async function (classification_id = null) {
 }
 
 
-/* ****************************************
-* Middleware to check token validity
-**************************************** */
+/* ************************
+ * Middleware to check token validity
+ ************************** */
 Util.checkJWTToken = (req, res, next) => {
+  console.log("check jwt token");
   if (req.cookies.jwt) {
     jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
       if (err) {
-        req.flash("notice", "Please log in.")
-        res.clearCookie("jwt")
+        console.log("JWT verification failed:", err);
+        req.flash("notice", "Please log in.");
+        res.clearCookie("jwt");
         res.locals.loggedin = false;
         res.locals.accountData = null;
         return next();
       }
+      console.log("JWT verified, accountData:", accountData);
       res.locals.accountData = accountData;
       res.locals.loggedin = true;
       next();
     });
   } else {
+    console.log("No JWT cookie found.");
     res.locals.loggedin = false;
     res.locals.accountData = null;
     next();
@@ -125,53 +129,41 @@ Util.checkJWTToken = (req, res, next) => {
 };
 
 
- /* ****************************************
- *  Check Login
- * ************************************ */
- Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
-    next()
-  } else {
-    req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
-  }
- }
-
 /* ****************************************
-// Middleware to check token validity and account type
+// Middleware to check Admin or Employee role
 **************************************** */
- Util.checkAdmin = (req, res, next) => {
-  console.log('Checking admin access...');
-  if (res.locals.accountData && (res.locals.accountData.account_type === 'Admin' || res.locals.accountData.account_type === 'Employee')) {
-    next();
+Util.checkAdmin = (req, res, next) => {
+  console.log("Checking admin access...");
+  if (res.locals.accountData) {
+    console.log("Account Data:", res.locals.accountData);
+    if (res.locals.accountData.account_type === "Admin" || res.locals.accountData.account_type === "Employee") {
+      console.log("Access granted.");
+      next();
+    } else {
+      console.log("Access denied: insufficient permissions");
+      req.flash("notice", "You do not have permission to access this page.");
+      res.redirect("/account/login");
+    }
   } else {
-    console.log('Access denied: insufficient permissions');
-    req.flash("notice", "You do not have permission to access this page.");
+    console.log("No account data found");
+    req.flash("notice", "Please log in.");
     res.redirect("/account/login");
   }
 };
 
-/* ****************************************
-* Middleware to check token validity
-**************************************** */
-Util.checkJWTToken = (req, res, next) => {
-  if (req.cookies.jwt) {
-    jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
-      if (err) {
-        req.flash("notice", "Please log in.")
-        res.clearCookie("jwt")
-        res.locals.loggedin = false;
-        res.locals.accountData = null;
-        return next();
-      }
-      res.locals.accountData = accountData;
-      res.locals.loggedin = true;
-      next();
-    });
-  } else {
-    res.locals.loggedin = false;
-    res.locals.accountData = null;
+
+/* ************************
+ * Middleware to check if logged in
+ ************************** */
+Util.checkLogin = (req, res, next) => {
+  console.log("Checking login status...");
+  if (res.locals.loggedin) {
+    console.log("User is logged in.");
     next();
+  } else {
+    console.log("User not logged in");
+    req.flash("notice", "Please log in.");
+    res.redirect("/account/login");
   }
 };
 
